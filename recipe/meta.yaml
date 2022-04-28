@@ -1,5 +1,5 @@
 {% set name = "pymrio" %}
-{% set version = "0.4.6" %}
+{% set version = "0.4.7" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pymrio-{{ version }}.tar.gz
-  sha256: cfc9836d33952ba716b7ba06557e6c0393c7e4ae99985b46e0dc3ecd31252eda
+  sha256: a452ecd2a5fc7d85022929891df3c3b292550e37ae5c4d476e168d6fd4bfd534
 
 build:
   number: 0
@@ -20,11 +20,12 @@ requirements:
     - pip
     - python >=3.7
   run:
+    - python >=3.7
     - pandas >=1.0
     - numpy >=1.20
     - matplotlib-base >=2.0.0
     - requests >=2.18
-    - xlrd >1.1.0 
+    - xlrd >1.1.0
     - openpyxl >=3.0.6
     - docutils >=0.14
 
