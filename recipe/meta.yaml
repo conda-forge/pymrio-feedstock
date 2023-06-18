@@ -1,5 +1,5 @@
 {% set name = "pymrio" %}
-{% set version = "0.4.8" %}
+{% set version = "0.5.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pymrio-{{ version }}.tar.gz
-  sha256: 749cd5ea2453a3e3df30fdb6535a8770ed5acde52ed2405c827a62ef658849e0
+  sha256: 774f7f564d9eaa356fe68562e1b2c6353972f8c76e42a08723204f4b07eade47
 
 build:
   number: 0
@@ -18,16 +18,18 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python >=3.8
   run:
-    - python >=3.7
-    - pandas >=1.0
+    - python >=3.8
+    - pyarrow >=11.0
+    - pandas >=1.5
     - numpy >=1.20
     - matplotlib-base >=2.0.0
     - requests >=2.18
     - xlrd >1.1.0
-    - openpyxl >=3.0.6
+    - openpyxl >=3.0.6,< 3.1.1
     - docutils >=0.14
+    - faker >=18.4.0
 
 test:
   imports:
@@ -41,7 +43,7 @@ test:
 about:
   home: https://github.com/konstantinstadler/pymrio
   summary: A python module for automating input output calculations and generating reports
-  license: GPL-3.0-or-later
+  license: LGPL-3.0-or-later
   # License file manually packaged. See: https://github.com/konstantinstadler/pymrio/pull/56
   license_file: LICENSE
   description: |
