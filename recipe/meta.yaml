@@ -1,5 +1,6 @@
 {% set name = "pymrio" %}
 {% set version = "0.5.1" %}
+{% set setupdata = load_setup_py_data() %}
 
 
 package:
@@ -20,16 +21,9 @@ requirements:
     - pip
     - python >=3.8
   run:
-    - python >=3.7
-    - pyarrow >=11.0
-    - pandas >=1.5
-    - numpy >=1.20
-    - matplotlib-base >=2.0.0
-    - requests >=2.18
-    - xlrd >1.1.0
-    - openpyxl >=3.1.2
-    - docutils >=0.14
-    - faker >=18.4.0
+    {% for req in setupdata.get('install_requires', []) %}
+      - {{ req }}
+    {% endfor %}
 
 test:
   imports:
