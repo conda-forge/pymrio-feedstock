@@ -1,6 +1,5 @@
 {% set name = "pymrio" %}
 {% set version = "0.5.1" %}
-{% set setupdata = load_setup_py_data() %}
 
 
 package:
@@ -21,9 +20,16 @@ requirements:
     - pip
     - python >=3.8
   run:
-    {% for req in setupdata.get('install_requires', []) %}
-      - {{ req }}
-    {% endfor %}
+    - python >=3.8
+    - pyarrow >=11.0
+    - pandas >=1.5
+    - numpy >=1.20
+    - matplotlib-base >=2.0.0
+    - requests >=2.18
+    - xlrd >1.1.0
+    - openpyxl >= 3.0.6, < 3.1.1
+    - docutils >=0.14
+
 
 test:
   imports:
@@ -37,7 +43,7 @@ test:
 about:
   home: https://github.com/konstantinstadler/pymrio
   summary: A python module for automating input output calculations and generating reports
-  license: GPL-3.0-or-later
+  license: LGPL-3.0-or-later
   # License file manually packaged. See: https://github.com/konstantinstadler/pymrio/pull/56
   license_file: LICENSE
   description: |
