@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pymrio-feedstoc
 
 Home: https://github.com/konstantinstadler/pymrio
 
-Package license: GPL-3.0-or-later
+Package license: LGPL-3.0-or-later
 
 Summary: A python module for automating input output calculations and generating reports
 
