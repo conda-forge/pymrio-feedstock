@@ -1,5 +1,5 @@
 {% set name = "pymrio" %}
-{% set version = "0.6.3" %}
+{% set version = "0.7.0" %}
 
 
 package:
@@ -7,28 +7,30 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pymrio-{{ version }}.tar.gz
-  sha256: 4ed12fe68388ee33a04f32ef1d59f044ac767c5b2b2e064932adfa7d3a00de4c
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/pymrio-{{ version }}.tar.gz
+  sha256: 470e6e7b1e310e78fc8a25748a2e3bb264f22ad1f85fb52b2d6c70b022c7c833
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python >=3.9
+    - python {{ python_min }}.*
     - setuptools >=61.0
+    - wheel 
+    - python-build
   run:
-    - python >=3.8
+    - python >={{ python_min }}.*
     - pyarrow >=11.0
     - pandas >=2.1
     - numpy >=1.20
     - matplotlib-base >=2.0.0
     - requests >=2.18
     - xlrd >1.1.0
-    - openpyxl >=3.0.6,< 3.1.1
+    - openpyxl >=3.1.5
     - docutils >=0.14
     - faker >=18.4.0
 
@@ -38,7 +40,9 @@ test:
     - pymrio.core
   commands:
     - pip check
+    - python -c "import pymrio; mrio=pymrio.load_test().calc_all(); assert mrio.emissions.D_cba is not None"
   requires:
+    - python {{ python_min }}.*
     - pip
 
 about:
